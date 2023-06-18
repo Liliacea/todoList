@@ -11,22 +11,16 @@ public class Check {
 
 
   public static void main(String[] args) {
-      try {
-          ObjectMapper objectMapper = new ObjectMapper();
-          CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
-          TaskObject doingSomething = new TaskObject.Builder()
-                  .name("doingSomething")
-                  .description("do_do_do_do")
-                  .state(TaskState.CLOSED)
 
-                  .build();
-          crudao.add(doingSomething);
+      CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
+      TaskObject doingSomething = new TaskObject.Builder()
+              .name("doingSomething")
+              .description("do_do_do_do")
+              .state(TaskState.CLOSED)
 
-          objectMapper.writeValue(new File("target/todo.json"), doingSomething);
+              .build();
+      System.out.println(crudao.select());
 
-      } catch (IOException e) {
-
-      }
 
   }
 

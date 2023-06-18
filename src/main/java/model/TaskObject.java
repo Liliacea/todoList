@@ -1,7 +1,8 @@
 package model;
 
+import javax.json.bind.annotation.JsonbPropertyOrder;
 import javax.persistence.*;
-
+@JsonbPropertyOrder({"id","name", "description","taskState"})
 @Entity
 @Table(name = "taskObjects")
 public class TaskObject {
