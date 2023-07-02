@@ -4,7 +4,7 @@ import javax.json.bind.annotation.JsonbPropertyOrder;
 import javax.persistence.*;
 @JsonbPropertyOrder({"id","name", "description","taskState"})
 @Entity
-@Table(name = "taskObjects")
+@Table(name = "taskObjectssssss")
 public class TaskObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,54 +14,16 @@ public class TaskObject {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "taskState")
 
-    private TaskState state;
+
 
     public TaskObject() {
     }
-    public static class Builder {
 
-        private String name;
+    public TaskObject(String name, String description) {
 
-        private String description;
-
-        private TaskState state;
-
-
-        public Builder() {
-
-
-        }
-
-        public Builder name(String val) {
-            name = val;
-            return this;
-        }
-
-        public Builder description (String val) {
-            description = val;
-            return this;
-        }
-
-        public Builder state (TaskState val) {
-            state = val;
-            return this;
-        }
-
-
-
-        public TaskObject build() {
-            return new TaskObject(this);
-        }
-    }
-
-    private TaskObject(Builder builder) {
-
-        name = builder.name;
-        description = builder.description;
-        state = builder.state;
-
+        this.name = name;
+        this.description = description;
 
     }
 
@@ -89,13 +51,7 @@ public class TaskObject {
         this.description = description;
     }
 
-    public TaskState getState() {
-        return state;
-    }
 
-    public void setState(TaskState state) {
-        this.state = state;
-    }
 
     @Override
     public String toString() {

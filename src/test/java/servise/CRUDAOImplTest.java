@@ -1,20 +1,16 @@
 package servise;
 
 import model.TaskObject;
-import model.TaskState;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 class CRUDAOImplTest {
     CRUDAOImpl crudao = new CRUDAOImpl(HibernateRollBack.create(HibernateUtil.getSessionFactory()));
-    TaskObject doingSomething = new TaskObject.Builder()
-            .name("doingSomething")
-            .description("do_do_do_do")
-            .state(TaskState.CLOSED)
+    TaskObject doingSomething = new TaskObject("aaa","aaa");
 
-            .build();
 
     @Test
     void add() {
