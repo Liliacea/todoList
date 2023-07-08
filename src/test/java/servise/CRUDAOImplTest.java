@@ -7,19 +7,19 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-class CRUDAOImplTest {
+public class CRUDAOImplTest {
     CRUDAOImpl crudao = new CRUDAOImpl(HibernateRollBack.create(HibernateUtil.getSessionFactory()));
     TaskObject doingSomething = new TaskObject("aaa","aaa");
 
 
     @Test
-    void add() {
+    public void add() {
 
-        assertThat(crudao.add(doingSomething).getName(), is("doingSomething"));
+        assertThat(crudao.add(doingSomething).getName(), is("aaa"));
     }
 
     @Test
-    void update() {
+    public void update() {
 
 
         crudao.add(doingSomething);
@@ -28,7 +28,7 @@ class CRUDAOImplTest {
         assertThat(crudao.update(doingSomething).getName(),is("yahz"));
     }
     @Test
-    void select() {
+    public void select() {
 
 
         crudao.add(doingSomething);
@@ -37,7 +37,7 @@ class CRUDAOImplTest {
 
 
     @Test
-    void delete() {
+    public void delete() {
         crudao.add(doingSomething);
         crudao.delete(doingSomething);
         assertThat(crudao.select().contains(doingSomething), is(false));

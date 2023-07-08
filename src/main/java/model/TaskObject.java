@@ -6,13 +6,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "taskObjectssssss")
 public class TaskObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column
     private Integer id;
-    @Column(name = "name")
+   @Column
     private String name;
-    @Column(name = "description")
+   @Column
     private String description;
 
 
@@ -53,13 +53,7 @@ public class TaskObject {
 
 
 
-    @Override
-    public String toString() {
-        return "Задача: " +
-                "id " + id +
-                "наименование " + name +
-                "Описание " + description;
-    }
+
 }
 
 

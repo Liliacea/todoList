@@ -30,6 +30,13 @@ public class JsonHandler extends HttpServlet {
 
         resp.getWriter().write(controller.createJson());
 
+
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+
     }
 }
 

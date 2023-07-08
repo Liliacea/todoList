@@ -7,7 +7,9 @@ import servise.HibernateUtil;
 
 import java.io.IOException;
 
+
 import java.util.List;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Controller {
@@ -15,6 +17,7 @@ public class Controller {
     private static List<TaskObject> createObjToJson() {
         CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
         List<TaskObject> taskObjects = new CopyOnWriteArrayList<>();
+
         taskObjects = crudao.select();
         return taskObjects;
     }

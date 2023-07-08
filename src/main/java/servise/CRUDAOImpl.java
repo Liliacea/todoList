@@ -10,11 +10,16 @@ import java.util.List;
 import java.util.function.Function;
 
 public class CRUDAOImpl implements CRUDao<TaskObject, Integer> {
-    SessionFactory sessionFactory;
+    private static final CRUDao CRU_DAO = new CRUDAOImpl(null);
+    static SessionFactory sessionFactory;
 
     public CRUDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+    public static CRUDao getInstance() {
+        return CRU_DAO;
+    }
+
 
     public <T> T tx(Function<Session, T> command) {
         final Session session = sessionFactory.openSession();

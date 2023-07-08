@@ -1,3 +1,4 @@
+import controller.Controller;
 import model.TaskObject;
 import servise.CRUDAOImpl;
 import servise.HibernateUtil;
@@ -10,7 +11,9 @@ public class Check {
       CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
       TaskObject doingSomething = new TaskObject("aaa", "aaa");
 
-      crudao.add(doingSomething);
+      String t = Controller.createJson();
+
+      System.out.println(t);
       System.out.println(crudao.select());
 
 
