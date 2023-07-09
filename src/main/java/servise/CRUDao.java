@@ -8,5 +8,6 @@ public interface CRUDao<T,R>{
     List<T> select ();
     T update(T t);
     T delete(T t);
+    List<T> findById(R id);
 
 }

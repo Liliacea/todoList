@@ -1,6 +1,7 @@
 package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import model.Person;
 import model.TaskObject;
 import servise.CRUDAOImpl;
 import servise.HibernateUtil;
@@ -14,12 +15,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Controller {
 
-    private static List<TaskObject> createObjToJson() {
+    private static List<Person> createObjToJson() {
         CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
-        List<TaskObject> taskObjects = new CopyOnWriteArrayList<>();
+        List<Person> personList = new CopyOnWriteArrayList<>();
 
-        taskObjects = crudao.select();
-        return taskObjects;
+       personList = crudao.select();
+        return personList;
     }
 
 

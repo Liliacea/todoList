@@ -1,24 +1,24 @@
 package servise;
 
+import model.Person;
 import model.TaskObject;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 import java.util.function.Function;
 
-public class CRUDAOImpl implements CRUDao<TaskObject, Integer> {
-    private static final CRUDao CRU_DAO = new CRUDAOImpl(null);
+public class CRUDAOImpl implements CRUDao<Person, Integer> {
+
     static SessionFactory sessionFactory;
 
     public CRUDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-    public static CRUDao getInstance() {
-        return CRU_DAO;
-    }
+
 
 
     public <T> T tx(Function<Session, T> command) {
@@ -36,41 +36,58 @@ public class CRUDAOImpl implements CRUDao<TaskObject, Integer> {
         }
     }
     @Override
-    public TaskObject add (TaskObject taskObject){
+    public Person add (Person person){
         return tx(session -> {
-            session.save(taskObject);
-            return taskObject;
+            session.save(person);
+            return person;
         });
     }
 
     @Override
-    public List<TaskObject> select() {
+    public List<Person> select() {
         return tx(session -> {
-            List<TaskObject> balanceObjects = null;
-            Criteria criteria = session.createCriteria(TaskObject.class);
-            balanceObjects = criteria.list();
-            for (TaskObject balanceObject : balanceObjects) {
-                System.out.println(balanceObject.toString());
+            List<Person> persons = null;
+            Criteria criteria = session.createCriteria(Person.class);
+            persons = criteria.list();
+            for (Person person : persons) {
+                System.out.println(person.toString());
             }
-            return balanceObjects;
+            return persons;
         });
     }
 
     @Override
-    public TaskObject update(TaskObject taskObject) {
+    public Person update(Person person) {
         return tx(session -> {
 
-            session.update(taskObject);
-            return taskObject;
+            session.update(person);
+            return person;
         });
     }
 
     @Override
-    public TaskObject delete(TaskObject taskObject) {
+    public Person delete(Person person) {
         return tx(session -> {
 
-            session.delete(taskObject);
-            return taskObject;
+            session.delete(person);
+            return person;
         });
     }
-}
+
+    @Override
+    public List<Person> findById(Integer id) {
+        return tx(session -> {
+            List<Person> persons = null;
+            Criteria criteria = session.createCriteria(Person.class);
+            criteria.add(Restrictions.eq("id", id));
+            persons = criteria.list();
+            for (Person person : persons) {
+                System.out.println(person.toString());
+
+
+            }
+            return persons;
+        });
+    }
+    }
+
