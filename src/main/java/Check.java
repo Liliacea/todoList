@@ -1,3 +1,5 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import controller.Controller;
 import model.Person;
 import model.TaskContext;
@@ -11,7 +13,7 @@ import java.util.List;
 public class Check {
 
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws JsonProcessingException {
     /*  TaskContext taskObject = new TaskContext();
 
 
@@ -26,7 +28,7 @@ public class Check {
 
      */
 
-      CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
+      /*CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
       Person person = new Person.Builder()
               .firstName("aaa")
               .lastName("bbb")
@@ -39,18 +41,19 @@ public class Check {
       taskObjects.add(doingSomething1);
       person.setTaskObjectSet(taskObjects);
       crudao.add(person);
-      crudao.select();
+      crudao.select();*/
 
-    /*  CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
-      TaskObject doingSomething = new TaskObject("aaa", "aaa");
+      CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
+    //  TaskObject doingSomething = new TaskObject("aaa", "aaa");
 
       String t = Controller.createJson();
 
       System.out.println(t);
-      System.out.println(crudao.select());
+
+      final Person person = new ObjectMapper().readValue(t, Person.class);
+      System.out.println(person);
 
 
-     */
 
   }
 

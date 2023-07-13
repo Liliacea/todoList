@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonbPropertyOrder({"id","firstname", "lastName","task", "taskState"})
+@JsonbPropertyOrder({"id","firstname", "lastName","task", "taskObjectSet"})
 @Entity
 @Table(name = "ToDoList")
 public class Person {
@@ -38,7 +38,14 @@ public class Person {
 
     public Person() {
     }
-    public static class Builder {
+
+    public Person(Integer id, String firstName, String lastName, List<TaskObject> taskObjectSet) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.taskObjectSet = taskObjectSet;
+    }
+    /*   public static class Builder {
 
         private String firstName;
 
@@ -78,7 +85,7 @@ public class Person {
 
 
 
-    }
+    }*/
 
     public int getId() {
         return id;
@@ -107,9 +114,9 @@ public class Person {
     @Override
     public String toString() {
         return "Имя: " + firstName +
-                "фамилия " + lastName +
-                "id " + id +
-                "Таска " + taskObjectSet;
+                " фамилия " + lastName +
+                " id " + id +
+                " Таска " + taskObjectSet;
     }
 }
 

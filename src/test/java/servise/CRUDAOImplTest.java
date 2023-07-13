@@ -12,10 +12,7 @@ import static org.hamcrest.Matchers.is;
 
 public class CRUDAOImplTest {
     CRUDAOImpl crudao = new CRUDAOImpl(HibernateRollBack.create(HibernateUtil.getSessionFactory()));
-    Person person = new Person.Builder()
-            .firstName("aaa")
-            .lastName("bbb")
-            .build();
+    Person person = new Person();
     TaskObject doingSomething = new TaskObject("aaa","aaa");
 
     TaskObject doingSomething1 = new TaskObject("aaa","aaaa");
