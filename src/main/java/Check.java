@@ -50,7 +50,7 @@ public class Check {
 
       System.out.println(t);
 
-      final Person person = new ObjectMapper().readValue(t, Person.class);
+      final Person[] person = new ObjectMapper().readValue(t, Person[].class);
       System.out.println(person);
 
 
