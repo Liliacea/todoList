@@ -28,11 +28,8 @@ public class Check {
 
      */
 
-      /*CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
-      Person person = new Person.Builder()
-              .firstName("aaa")
-              .lastName("bbb")
-              .build();
+   /*   CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
+      Person person = new Person("aaa","bbb");
       TaskObject doingSomething = new TaskObject("doingSomething", "do_do_do_do");
       TaskObject doingSomething1 = new TaskObject("doingSomething", "do_do_do_do");
 
@@ -41,17 +38,19 @@ public class Check {
       taskObjects.add(doingSomething1);
       person.setTaskObjectSet(taskObjects);
       crudao.add(person);
-      crudao.select();*/
+      crudao.select();
 
-      CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
+    */
+
+     // CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
     //  TaskObject doingSomething = new TaskObject("aaa", "aaa");
 
       String t = Controller.createJson();
 
-      System.out.println(t);
+     System.out.println(t);
 
-      final Person[] person = new ObjectMapper().readValue(t, Person[].class);
-      System.out.println(person);
+      final Person[] person1 = new ObjectMapper().readValue(t, Person[].class);
+      System.out.println(person1[0]);
 
 
 

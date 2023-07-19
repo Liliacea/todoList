@@ -39,7 +39,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(Integer id, String firstName, String lastName, List<TaskObject> taskObjectSet) {
+    public Person(String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

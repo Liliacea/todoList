@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>JsonHandler</servlet-name>
-        <servlet-class>JsonHandler</servlet-class>
+        <servlet-class>TasksController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>JsonHandler</servlet-name>

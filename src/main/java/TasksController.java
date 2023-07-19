@@ -1,21 +1,22 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import controller.Controller;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import model.Person;
 import servise.CRUDAOImpl;
 import servise.HibernateUtil;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
-public class JsonHandler extends HttpServlet {
+public class TasksController extends HttpServlet {
 
 
 
     private static final long serialVersionUID = 1L;
-
+    String t = Controller.createJson();
     private final static String index = "/WEB-INF/json.jsp";
 
     @Override
@@ -30,22 +31,26 @@ public class JsonHandler extends HttpServlet {
 
         Controller controller = new Controller();
 
-      //  resp.getWriter().write(controller.createJson());
+       // resp.getWriter().write(t);
         req.getRequestDispatcher(index).forward(req, resp);
 
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        final String data = req.getParameter("data");
+       final String data = req.getParameter("data");
         ObjectMapper objectMapper = new ObjectMapper();
 
-        System.out.println(data);
-        Person person = objectMapper.readValue(data, Person.class);
-        System.out.println(person);
-
+       // System.out.println(data);
+        Person[] person = objectMapper.readValue(data, Person[].class);
+        CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
+        crudao.add(person[0]);
+        System.out.println(person[0]);
+        resp.getWriter();
         doGet(req, resp);
-        System.out.println(data);
+     //   System.out.println(data);
+
+
 
     }
 }
