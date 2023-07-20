@@ -18,6 +18,12 @@ public class TaskObject {
     private String description;
     @Column(name = "taskState")
 
+ /*   @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+
+  */
+
     private String state;
 
 
