@@ -1,23 +1,25 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import controller.Controller;
+import controller.JsonCreator;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Person;
-import servise.CRUDAOImpl;
+import model.TaskObject;
+import servise.CRUDaoImplTasks;
 import servise.HibernateUtil;
 
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+
+import static java.lang.Integer.parseInt;
 
 public class TasksController extends HttpServlet {
 
 
-
     private static final long serialVersionUID = 1L;
-    String t = Controller.createJson();
+    String t = JsonCreator.createJson();
     private final static String index = "/WEB-INF/json.jsp";
 
     @Override
@@ -30,31 +32,44 @@ public class TasksController extends HttpServlet {
             throws ServletException, IOException {
 
 
-        Controller controller = new Controller();
+        JsonCreator controller = new JsonCreator();
         PrintWriter writer = new PrintWriter(resp.getOutputStream());
-       // resp.getWriter().write(t);
-       // req.getRequestDispatcher(index).forward(req, resp);
+        // resp.getWriter().write(t);
+        // req.getRequestDispatcher(index).forward(req, resp);
 
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-       //final String data = req.getParameter("data");
+        CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
         ObjectMapper objectMapper = new ObjectMapper();
+      /*  String id = req.getParameter("id");
+        Integer id_ = parseInt(id);
 
-       // System.out.println(data);
-        Person[] person = objectMapper.readValue(req.getInputStream(), Person[].class);
-        CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
-        crudao.add(person[0]);
-        System.out.println(person[0]);
-        resp.getWriter().write(person[0].toString());
+        List<TaskObject> taskObject = crudao.findById(id_);
+
+        resp.getWriter().write(objectMapper.writeValueAsString(taskObject));
+        resp.getWriter().write(taskObject.toString());
         doGet(req, resp);
-     //   System.out.println(data);
+
+       */
 
 
 
+        TaskObject[] person = objectMapper.readValue(req.getInputStream(), TaskObject[].class);
+            crudao.select();
+            crudao.add(person[0]);
+            System.out.println(person[0]);
+            resp.getWriter().write(person[0].toString());
+            doGet(req, resp);
+
+
+
+
+
+        }
     }
-}
 
 
 

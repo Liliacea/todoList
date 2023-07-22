@@ -1,4 +1,4 @@
-package controller;
+package model.state;
 
 public enum TaskState  {
 

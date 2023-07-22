@@ -1,10 +1,9 @@
-package controller;
-
-import model.TaskContext;
+package model.state;
 
 
-public class Closed implements IState {
+public class Done implements IState {
     TaskContext taskContext;
+
 
     @Override
     public void takeToWork(TaskContext taskContext) {
@@ -18,7 +17,7 @@ public class Closed implements IState {
 
     @Override
     public void closeTask(TaskContext taskContext) {
-    taskContext.setiState(new Closed());
+        taskContext.setiState(new Closed());
     }
 
     @Override
@@ -28,6 +27,6 @@ public class Closed implements IState {
 
     @Override
     public String getStatusName() {
-        return TaskState.CLOSED.getStatusName();
+        return TaskState.DONE.getStatusName();
     }
 }

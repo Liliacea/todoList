@@ -1,14 +1,7 @@
-package model;
-
-import controller.IState;
-import controller.NewState;
+package model.state;
 
 public class TaskContext {
-
-
-
     private IState iState;
-
     public TaskContext() {
         this.setiState(new NewState());
     }
@@ -16,12 +9,8 @@ public class TaskContext {
     private String getStateName(){
         return iState.getStatusName();
     }
-
-
-
     public void wip(){
        iState.takeToWork(this);
-
     };
     public void  Done(){
         iState.getDone(this);
@@ -34,20 +23,13 @@ public class TaskContext {
     };
 
 
-
-
-
-
     public void setiState(IState iState) {
         this.iState = iState;
     }
-
     public IState getiState() {
         return iState;
     }
     public String getStatusName(){
         return iState.getStatusName();
     }
-
-
 }

@@ -1,14 +1,9 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import controller.Controller;
 import model.Person;
-import model.TaskContext;
 import model.TaskObject;
-import servise.CRUDAOImpl;
 
+import servise.CRUDaoImplTasks;
 import servise.HibernateUtil;
-
-import java.util.List;
 
 public class Check {
 
@@ -28,29 +23,35 @@ public class Check {
 
      */
 
-   /*   CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
+     //CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
+      CRUDaoImplTasks cruDaoImplTasks = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
       Person person = new Person("aaa","bbb");
       TaskObject doingSomething = new TaskObject("doingSomething", "do_do_do_do");
       TaskObject doingSomething1 = new TaskObject("doingSomething", "do_do_do_do");
 
-      List<TaskObject> taskObjects =  person.getTaskObjectSet();
+     /* List<TaskObject> taskObjects =  person.getTaskObjectSet();
       taskObjects.add(doingSomething);
       taskObjects.add(doingSomething1);
       person.setTaskObjectSet(taskObjects);
       crudao.add(person);
       crudao.select();
 
-    */
+      */
+
+
+
 
      // CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
     //  TaskObject doingSomething = new TaskObject("aaa", "aaa");
 
-      String t = Controller.createJson();
+    // String t = Controller.createJson();
 
-     System.out.println(t);
+    // System.out.println(t);
+      System.out.println(cruDaoImplTasks.findById(58));
+     // final Person[] person1 = new ObjectMapper().readValue(t, Person[].class);
+     // System.out.println(person1[0]);
 
-      final Person[] person1 = new ObjectMapper().readValue(t, Person[].class);
-      System.out.println(person1[0]);
+
 
 
 

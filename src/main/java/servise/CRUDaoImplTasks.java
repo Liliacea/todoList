@@ -1,6 +1,5 @@
 package servise;
 
-import model.Person;
 import model.TaskObject;
 import org.hibernate.Criteria;
 import org.hibernate.Session;

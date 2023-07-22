@@ -1,9 +1,8 @@
 package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Person;
 import model.TaskObject;
-import servise.CRUDAOImpl;
+import servise.CRUDaoImplTasks;
 import servise.HibernateUtil;
 
 import java.io.IOException;
@@ -13,18 +12,18 @@ import java.util.List;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Controller {
+public class JsonCreator {
 
-    private static List<Person> createObjToJson() {
-        CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
-        List<Person> personList = new CopyOnWriteArrayList<>();
+    private static List<TaskObject> createObjToJson() {
+        CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
+        List<TaskObject> personList = new CopyOnWriteArrayList<>();
 
        personList = crudao.select();
         return personList;
     }
 
 
-    public static String createJson() {
+    public static   String createJson() {
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {

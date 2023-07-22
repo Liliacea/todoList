@@ -1,6 +1,4 @@
-package controller;
-
-import model.TaskContext;
+package model.state;
 
 public interface IState {
     void takeToWork(TaskContext taskContext);

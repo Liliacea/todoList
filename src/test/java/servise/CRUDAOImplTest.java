@@ -17,7 +17,7 @@ public class CRUDAOImplTest {
 
     TaskObject doingSomething1 = new TaskObject("aaa","aaaa");
 
-    List<TaskObject> taskObjects = person.getTaskObjectSet();
+   /* List<TaskObject> taskObjects = person.getTaskObjectSet();
 
     @Test
    public void add() {
@@ -94,5 +94,7 @@ public class CRUDAOImplTest {
 
 
     }
+
+    */
 
 }

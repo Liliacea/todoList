@@ -10,7 +10,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>JsonHandler</servlet-name>
-        <url-pattern>/json.html</url-pattern>
+        <url-pattern>/todo/tasks</url-pattern>
 
     </servlet-mapping>
 
