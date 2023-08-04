@@ -40,7 +40,7 @@ public class TasksController extends HttpServlet {
             throws ServletException, IOException {
         CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
         ObjectMapper objectMapper = new ObjectMapper();
-      /*  String id = req.getParameter("id");
+        String id = req.getParameter("id");
         Integer id_ = parseInt(id);
 
         List<TaskObject> taskObject = crudao.findById(id_);
@@ -50,18 +50,20 @@ public class TasksController extends HttpServlet {
         doGet(req, resp);
 
 
-       */
 
 
 
 
-        TaskObject[] person = objectMapper.readValue(req.getInputStream(), TaskObject[].class);
+
+       /* TaskObject[] person = objectMapper.readValue(req.getInputStream(), TaskObject[].class);
             crudao.select();
             crudao.add(person[0]);
             System.out.println(person[0]);
             resp.getWriter().write(person[0].toString());
             doGet(req, resp);
 
+
+        */
 
 
 
