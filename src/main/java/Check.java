@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
+import controller.JsonCreator;
 import model.Person;
 import model.TaskObject;
 
@@ -44,9 +45,9 @@ public class Check {
      // CRUDAOImpl crudao = new CRUDAOImpl(HibernateUtil.getSessionFactory());
     //  TaskObject doingSomething = new TaskObject("aaa", "aaa");
 
-    // String t = Controller.createJson();
+     String t = JsonCreator.createJson();
 
-    // System.out.println(t);
+     System.out.println(t);
       System.out.println(cruDaoImplTasks.findById(58));
      // final Person[] person1 = new ObjectMapper().readValue(t, Person[].class);
      // System.out.println(person1[0]);

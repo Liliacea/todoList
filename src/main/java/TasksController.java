@@ -19,8 +19,7 @@ public class TasksController extends HttpServlet {
 
 
     private static final long serialVersionUID = 1L;
-    String t = JsonCreator.createJson();
-    private final static String index = "/WEB-INF/json.jsp";
+
 
     @Override
     public void init() throws ServletException {
@@ -32,10 +31,7 @@ public class TasksController extends HttpServlet {
             throws ServletException, IOException {
 
 
-        JsonCreator controller = new JsonCreator();
-        PrintWriter writer = new PrintWriter(resp.getOutputStream());
-        // resp.getWriter().write(t);
-        // req.getRequestDispatcher(index).forward(req, resp);
+
 
     }
 
@@ -53,7 +49,9 @@ public class TasksController extends HttpServlet {
         resp.getWriter().write(taskObject.toString());
         doGet(req, resp);
 
+
        */
+
 
 
 
@@ -63,6 +61,8 @@ public class TasksController extends HttpServlet {
             System.out.println(person[0]);
             resp.getWriter().write(person[0].toString());
             doGet(req, resp);
+
+
 
 
 
