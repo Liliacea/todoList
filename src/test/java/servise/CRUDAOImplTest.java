@@ -12,12 +12,12 @@ import static org.hamcrest.Matchers.is;
 
 public class CRUDAOImplTest {
     CRUDAOImpl crudao = new CRUDAOImpl(HibernateRollBack.create(HibernateUtil.getSessionFactory()));
-    Person person = new Person();
+    Person person = new Person("aaa","bbb");
     TaskObject doingSomething = new TaskObject("aaa","aaa");
 
     TaskObject doingSomething1 = new TaskObject("aaa","aaaa");
 
-   /* List<TaskObject> taskObjects = person.getTaskObjectSet();
+    List<TaskObject> taskObjects = person.getTaskObjectSet();
 
     @Test
    public void add() {
@@ -95,6 +95,6 @@ public class CRUDAOImplTest {
 
     }
 
-    */
+
 
 }
