@@ -6,12 +6,49 @@
 
     <servlet>
         <servlet-name>JsonHandler</servlet-name>
-        <servlet-class>TasksController</servlet-class>
+        <servlet-class>FindByIdServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>JsonHandler</servlet-name>
-        <url-pattern>/todo/tasks</url-pattern>
+        <url-pattern>/findTask</url-pattern>
 
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Add</servlet-name>
+        <servlet-class>AddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Add</servlet-name>
+        <url-pattern>/addTask</url-pattern>
+
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Update</servlet-name>
+        <servlet-class>UpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Update</servlet-name>
+        <url-pattern>/updateTask</url-pattern>
+
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Delete</servlet-name>
+        <servlet-class>DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Delete</servlet-name>
+        <url-pattern>/deleteTask</url-pattern>
+
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FindAll</servlet-name>
+        <servlet-class>FindAllServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindAll</servlet-name>
+        <url-pattern>/findAllTasks</url-pattern>
+
+    </servlet-mapping>
 </web-app>

@@ -1,6 +1,7 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import model.state.TaskContext;
 
 import javax.json.bind.annotation.JsonbPropertyOrder;
@@ -19,7 +20,7 @@ public class TaskObject {
     private String description;
     @Column(name = "taskState")
     private String state;
-    @JsonBackReference
+   @JsonBackReference
     @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     private Person person;
