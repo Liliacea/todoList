@@ -10,14 +10,14 @@ import servise.HibernateUtil;
 import java.io.IOException;
 
 public class DeleteServlet extends HttpServlet {
+    CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
+    ObjectMapper objectMapper = new ObjectMapper();
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
-        ObjectMapper objectMapper = new ObjectMapper();
-        TaskObject[] person = objectMapper.readValue(req.getInputStream(), TaskObject[].class);
-        crudao.delete(person[0]);
-        resp.getWriter().write(person[0].toString());
+        TaskObject[] taskObjectGroup = objectMapper.readValue(req.getInputStream(), TaskObject[].class);
+        crudao.delete(taskObjectGroup[0]);
+        resp.getWriter().write(taskObjectGroup[0].toString());
     }
 }

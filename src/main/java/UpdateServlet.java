@@ -11,13 +11,14 @@ import java.io.IOException;
 
 public class UpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
+    ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
-        ObjectMapper objectMapper = new ObjectMapper();
-        TaskObject[] person = objectMapper.readValue(req.getInputStream(), TaskObject[].class);
-        crudao.update(person[0]);
-        resp.getWriter().write(person[0].toString());
+    
+        TaskObject[] taskObjectGroup = objectMapper.readValue(req.getInputStream(), TaskObject[].class);
+        crudao.update(taskObjectGroup[0]);
+        resp.getWriter().write(taskObjectGroup[0].toString());
     }
 }

@@ -19,15 +19,14 @@ public class FindByIdServlet extends HttpServlet {
 
 
     private static final long serialVersionUID = 1L;
-
+    CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
+    ObjectMapper objectMapper = new ObjectMapper();
 
 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
-        ObjectMapper objectMapper = new ObjectMapper();
         String id = req.getParameter("id");
         Integer id_ = parseInt(id);
         List<TaskObject> taskObject = crudao.findById(id_);

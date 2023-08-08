@@ -14,11 +14,10 @@ import static java.lang.Integer.parseInt;
 
 public class FindAllServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+    CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
+    ObjectMapper objectMapper = new ObjectMapper();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
-        ObjectMapper objectMapper = new ObjectMapper();
         List<TaskObject> taskObject = crudao.select();
         resp.getWriter().write(objectMapper.writeValueAsString(taskObject.toString()));
     }

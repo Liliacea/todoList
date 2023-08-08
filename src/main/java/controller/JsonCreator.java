@@ -14,8 +14,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class JsonCreator {
 
+
+        static CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
+        static ObjectMapper objectMapper = new ObjectMapper();
+
+
     private static List<TaskObject> createObjToJson() {
-        CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
+
         List<TaskObject> personList = new CopyOnWriteArrayList<>();
 
        personList = crudao.select();
@@ -25,7 +30,7 @@ public class JsonCreator {
 
     public static   String createJson() {
 
-        ObjectMapper objectMapper = new ObjectMapper();
+
         try {
 
             return objectMapper.writeValueAsString(createObjToJson());
