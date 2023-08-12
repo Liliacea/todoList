@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.TaskObject;
+import servise.CRUDServletImpl;
 import servise.CRUDaoImplTasks;
 import servise.HibernateUtil;
 
@@ -19,8 +20,6 @@ public class FindByIdServlet extends HttpServlet {
 
 
     private static final long serialVersionUID = 1L;
-    CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
-    ObjectMapper objectMapper = new ObjectMapper();
 
 
 
@@ -29,9 +28,9 @@ public class FindByIdServlet extends HttpServlet {
             throws ServletException, IOException {
         String id = req.getParameter("id");
         Integer id_ = parseInt(id);
-        List<TaskObject> taskObject = crudao.findById(id_);
-        resp.getWriter().write(objectMapper.writeValueAsString(taskObject));
-        resp.getWriter().write(taskObject.toString());
+        List<TaskObject> taskObjectGroup = CRUDServletImpl.getInstance().findById(id_);
+
+        resp.getWriter().write(taskObjectGroup.toString());
         }
     }
 

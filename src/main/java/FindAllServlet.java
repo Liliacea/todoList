@@ -4,6 +4,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.TaskObject;
+import servise.CRUDServlet;
+import servise.CRUDServletImpl;
 import servise.CRUDaoImplTasks;
 import servise.HibernateUtil;
 
@@ -14,11 +16,10 @@ import static java.lang.Integer.parseInt;
 
 public class FindAllServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    CRUDaoImplTasks crudao = new CRUDaoImplTasks(HibernateUtil.getSessionFactory());
-    ObjectMapper objectMapper = new ObjectMapper();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<TaskObject> taskObject = crudao.select();
-        resp.getWriter().write(objectMapper.writeValueAsString(taskObject.toString()));
+        List<TaskObject> taskObjectGroup = CRUDServletImpl.getInstance().findAll();
+        resp.getWriter().write(taskObjectGroup.toString());
     }
 }
