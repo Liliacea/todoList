@@ -17,7 +17,7 @@ public class CRUDServletImpl implements CRUDServlet{
 
 
 
-    public static synchronized CRUDServlet getInstance(){
+    public static CRUDServlet getInstance(){
 
         return INSTANSE;
     }

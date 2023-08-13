@@ -13,11 +13,11 @@ import java.io.IOException;
 public class UpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-
+    ObjectMapper objectMapper = new ObjectMapper();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        TaskObject taskObject = new ObjectMapper().readValue(req.getInputStream(), TaskObject.class);
+        TaskObject taskObject = objectMapper.readValue(req.getInputStream(), TaskObject.class);
         CRUDServletImpl.getInstance().update(taskObject);
         resp.getWriter().write(taskObject.toString());
     }
