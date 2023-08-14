@@ -9,6 +9,7 @@ import model.TaskObject;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class CRUDServletImpl implements CRUDServlet{
     private static final long serialVersionUID = 1L;
@@ -26,12 +27,9 @@ public class CRUDServletImpl implements CRUDServlet{
 
     @Override
     public TaskObject add(TaskObject taskObject) {
-        if (taskObject!=null) {
+
             crudao.add(taskObject);
-        } else{
-            //TaskObject taskObjectEmpty = new EmptyTask();
-           // return  taskObjectEmpty;
-        }
+
     return taskObject;
     }
 

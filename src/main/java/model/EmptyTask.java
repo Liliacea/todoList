@@ -10,7 +10,7 @@ public class EmptyTask {
 
 
 
-    public EmptyTask() {
+    public EmptyTask(String code, String reason) {
 
     }
 

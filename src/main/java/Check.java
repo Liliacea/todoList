@@ -1,11 +1,8 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import controller.JsonCreator;
 import model.EmptyTask;
 import model.Person;
 import model.TaskObject;
-
-import servise.*;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -33,13 +30,15 @@ public class Check {
        ObjectMapper objectMapper = new ObjectMapper();
       Person person = new Person("aaa","bbb");
       TaskObject doingSomething = new TaskObject("doingSomething", "do_do_do_do");
-      EmptyTask emptyTask = new EmptyTask();
+     /* EmptyTask emptyTask = new EmptyTask(code, reason);
       emptyTask.setCode("emptyTask");
       emptyTask.setReason("Пустойобъект");
       System.out.println(emptyTask);
       List<EmptyTask> personList = new CopyOnWriteArrayList<>();
       personList.add(emptyTask);
       System.out.println(objectMapper.writeValueAsString(personList));
+
+      */
      //   CRUDServletImpl.getInstance().add(doingSomething1);
      /* List<TaskObject> taskObjects =  person.getTaskObjectSet();
       taskObjects.add(doingSomething);
