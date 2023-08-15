@@ -11,13 +11,14 @@ public class EmptyTask {
 
 
     public EmptyTask(String code, String reason) {
-
+    this.code = code;
+    this.reason = reason;
     }
 
     @Override
     public String toString() {
         return "code: " + code +
-                "reason: " + reason;
+                " reason: " + reason;
     }
 
     public String getCode() {

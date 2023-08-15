@@ -16,19 +16,24 @@ public class AddServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     ObjectMapper objectMapper = new ObjectMapper();
-    private String code = "Empty";
-    private String reason = "Пустой объект";
+
+    TaskObject taskObject;
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        taskObject = objectMapper.readValue(req.getInputStream(), TaskObject.class);
+
+        if (Objects.isNull(taskObject)){
+        resp.getWriter().write((new EmptyTask("Empty", "Пустой объект") ).toString());
+
+        } else {
 
 
 
-            TaskObject taskObject = objectMapper.readValue(req.getInputStream(), TaskObject.class);
-        if (Objects.isNull(taskObject))
-            resp.getWriter().write(new EmptyTask(code, reason).toString());
-        CRUDServletImpl.getInstance().add(taskObject);
+            CRUDServletImpl.getInstance().add(taskObject);
             resp.getWriter().write(taskObject.toString());
+        }
 
 
     }
