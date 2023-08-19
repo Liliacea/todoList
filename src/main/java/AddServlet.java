@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,26 +16,20 @@ import java.util.Objects;
 public class AddServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    TaskObject taskObject;
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        taskObject = objectMapper.readValue(req.getInputStream(), TaskObject.class);
 
-        if (Objects.isNull(taskObject)){
-        resp.getWriter().write((new EmptyTask("Empty", "Пустой объект") ).toString());
-
-        } else {
-
-
+        try {
+            TaskObject taskObject = objectMapper.readValue(req.getInputStream(), TaskObject.class);
 
             CRUDServletImpl.getInstance().add(taskObject);
             resp.getWriter().write(taskObject.toString());
+        } catch (Exception e) {
+            resp.getWriter().write((new EmptyTask("Empty", "Пустой объект")).toString());
         }
-
-
     }
 }
+

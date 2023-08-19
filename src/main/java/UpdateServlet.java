@@ -13,7 +13,7 @@ import java.io.IOException;
 public class UpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
